@@ -57,7 +57,7 @@ abstract class RetrieveSchemaAbstractMojo : AbstractMojo() {
         val schemaFile = File("${outputDirectory.absolutePath}/schema.graphql")
         runBlocking {
             val schema = retrieveGraphQLSchema(endpoint, headers, TimeoutConfig(connect = timeoutConfiguration.connect, read = timeoutConfiguration.read))
-            schemaFile.writeText(schema)
+            schemaFile.writeText(schema, Charsets.UTF_8)
         }
         log.debug("successfully downloaded schema")
     }

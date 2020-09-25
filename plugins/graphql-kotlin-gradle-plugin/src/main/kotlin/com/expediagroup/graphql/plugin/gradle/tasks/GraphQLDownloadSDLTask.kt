@@ -78,7 +78,7 @@ open class GraphQLDownloadSDLTask : DefaultTask() {
         runBlocking {
             val schema = downloadSchema(endpoint = endpoint.get(), httpHeaders = headers.get(), timeoutConfig = timeoutConfig.get())
             val outputFile = outputFile.get().asFile
-            outputFile.writeText(schema)
+            outputFile.writeText(schema, Charsets.UTF_8)
         }
         logger.debug("successfully downloaded SDL")
     }
