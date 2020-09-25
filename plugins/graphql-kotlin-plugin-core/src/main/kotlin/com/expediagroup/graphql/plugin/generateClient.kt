@@ -30,7 +30,7 @@ fun generateClient(
     schema: File,
     queries: List<File>
 ): List<FileSpec> {
-    val graphQLSchema = SchemaParser().parse(schema)
+    val graphQLSchema = SchemaParser().parse(schema.bufferedReader(Charsets.UTF_8))
     val generator = GraphQLClientGenerator(graphQLSchema, config)
     return generator.generate(queries)
 }
